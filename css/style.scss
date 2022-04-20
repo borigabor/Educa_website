@@ -1,0 +1,911 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
+
+*{
+   font-family: 'Nunito', sans-serif;
+   margin:0; padding:0;
+   box-sizing: border-box;
+   outline: none; border:none;
+   text-decoration: none;
+   transition: all .2s linear;
+}
+
+$green:#0eb582;
+$light-green:#f0fdfa;
+$light-color:#777;
+$light-white:#eee;
+$black:#444;
+$white:#fff;
+$border:.1rem solid $green;
+$box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+
+
+@mixin grid($val){
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+    gap: 2rem;
+}
+
+@mixin titleSize($titleSize){
+    font-size: $titleSize;
+    text-transform: capitalize;
+    color: $black;
+}
+
+@mixin graphSize($graphSize){
+    font-size: $graphSize;
+    line-height: 2;
+    color: $light-color;
+    padding: 1rem 0;
+}
+
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar{
+        width:1rem;
+     }
+  
+     &::-webkit-scrollbar-track{
+        background: transparent;
+     }
+  
+     &::-webkit-scrollbar-thumb{
+        background: $green;
+     }
+}
+
+section{
+    padding: 5rem 10%;
+}
+
+.heading{
+    @include titleSize(4rem);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.heading-link{
+    text-align: center;
+    background: url(../images/heading-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    h1{
+        @include titleSize(5.5rem);
+        
+    }
+
+    p{
+        @include graphSize(1.7rem);
+
+        a{
+            color: $green;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.btn{
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 1rem 3rem;
+    border: .1rem solid $green;
+    cursor: pointer;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    color: $green;
+    background: $white;
+
+    &:hover{
+        background: $green;
+        color: $white;
+    }
+}
+
+.header{
+    padding: 1.5rem 10%;
+    position: sticky;
+    top: 0; left: 0; right: 0;
+    background: $white;
+    display: flex;
+    align-items: center;
+    z-index: 999;
+    box-shadow: $box-shadow;
+
+    .logo{
+        margin-right: auto;
+        @include titleSize(2.5rem);
+        font-weight: bolder;
+
+        i{
+            color: $green;
+        }
+    }
+
+    .navbar{
+        position: relative;
+  
+        #close-navbar{
+           position: absolute;
+           top:1.5rem; right:2rem;
+           font-size: 4rem;
+           cursor: pointer;
+           color:$black;
+           display: none;
+  
+           &:hover{
+              transform: rotate(90deg);
+           }
+        }
+  
+        a{
+           margin-right: 2rem;
+           @include graphSize(2rem);
+     
+           &:hover{
+              color:$green;
+           }
+        }
+     }
+
+    .icons div{
+        margin-left: 2rem;
+        font-size: 2.5rem;
+        color: $black;
+        cursor: pointer;
+
+        &:hover{
+            color: $green;
+        }
+    }
+}
+
+#menu-btn{
+    display: none;
+}
+
+.account-form{
+    position: fixed;
+    top: 0;
+    right: -110%;
+    z-index: 1000;
+    width: 35rem;
+    height: 100%;
+    background: $white;
+    text-align: center;
+    padding: 2rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    
+
+    &.active{
+        right: 0;
+        box-shadow: 0 0 0 100vw rgba(0, 0, 0, .7);
+    }
+
+    #account-close{
+        position: absolute;
+        top: 3rem;
+        right: 3rem;
+        font-size: 4rem;
+        color: $black;
+        cursor: pointer;
+
+        &:hover{
+            transform: rotate(45deg);
+        }
+    }
+
+    form{
+        padding: 2rem;
+        border: .1rem solid $green;
+        margin-top: 2rem;
+        display: none;
+
+        &.active{
+            display: block;
+        }
+
+        h3{
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: $black;
+            margin-bottom: 1rem;
+        }
+
+        .box{
+            width: 100%;
+            border: $border;
+            margin: .7rem 0;
+            padding: 1.2rem 1.4rem;
+            font-size: 1.6rem;
+            color: $black;
+            text-transform: none;
+        }
+
+        .flex{
+            padding: 1rem 0;
+            display: flex;
+            align-items: center;
+
+            label{
+                font-size: 1.5rem;
+                color: $green;
+                margin-left: .5rem;
+                cursor: pointer;
+
+
+            }
+
+            a{
+                margin-left: auto;
+                font-size: 1.5rem;
+                color: $green;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+        .btn{
+            width: 100%;
+        }
+    }
+
+.buttons a{
+    margin: 0 .5rem;
+
+    &.active{
+        background: $green;
+        color: $white;
+    }
+}
+
+}
+
+.home{
+    padding: 0;
+
+    .slide{
+        height: 60rem;
+        display: flex;
+        align-items: center;
+        padding: 5rem 10%;
+        background-size: cover !important;
+        background-position: center !important;
+
+        .content{
+            width: 50rem;
+            h3{
+                @include titleSize(5rem);
+                color: $white;
+
+            }
+            p{
+                @include graphSize(1.5rem);
+                color: $white;
+            }
+        }
+    }
+}
+
+.home-subjects .box-container{
+
+    @include grid(17rem);
+
+    .box{
+        text-align: center;
+        padding: 2rem;
+        border: $border;
+
+        &:hover{
+            background: $green;
+
+            h3,p{
+                color: $white;
+            }
+        }
+
+        img{
+            height: 10rem;
+            margin-bottom: .7rem;
+        }
+
+        h3{
+            @include titleSize(1.7rem);
+        }
+
+        p{
+            @include graphSize(1.5rem);
+        }
+    }
+}
+
+.home-courses .slide{
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    background: $light-green;
+
+    &:hover{
+        .content{
+            bottom: 0;
+        }
+    }
+
+    .image{
+        padding: 2rem;
+
+
+        img{
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        h3{
+            @include titleSize(2rem);
+        }
+    }
+
+    .content{
+        position: absolute;
+        bottom: -110%;
+        left: 0;
+        padding: 2rem;
+        background: $green;
+
+        h3{
+            @include titleSize(2rem);
+            color: $white;
+        }
+
+        p{
+            @include graphSize(1.5rem);
+            color: $white;
+        }
+
+        .btn{
+            &:hover{
+                background: $black;
+                color: $white;
+            }
+        }
+    }
+}
+
+
+
+.footer{
+    background: $light-green;
+
+    .box-container{
+        @include grid(25rem);
+
+        .box{
+            h3{
+                @include titleSize(2rem);
+                margin-bottom: 2rem;
+
+                i{
+                    color: $green;
+                }
+
+            }
+            p{
+                @include graphSize(1.5rem);
+            }
+
+            .share a{
+                height: 4rem;
+                width: 4rem;
+                line-height: 4rem;
+                text-align: center;
+                font-size: 2rem;
+                color: $white;
+                background: $green;
+                margin: .3rem;
+
+                &:hover{
+                    background: $black;
+                }
+            }
+
+            .link{
+                display: block;
+                @include graphSize(1.5rem);
+                padding: .5rem;
+
+                &:hover{
+                    color: $green;
+                    text-decoration: underline;
+                }
+            }
+
+            .inputBox{
+                width: 35rem;
+                border-radius: .5rem;
+                background: $white;
+                overflow: hidden;
+                display: flex;
+                border: $border;
+                align-items: center;
+                justify-content: space-between;
+                
+
+                .email-box{
+                    width: 100%;
+                    font-size: 1.6rem;
+                    color: $black;
+                    text-transform: none;
+                   
+                }
+
+                .btn{
+                    background: $green;
+                    color: $white;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+.about .row{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+
+    .image{
+        flex: 1 1 41rem;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .content{
+        flex: 1 1 41rem;
+
+        h3{
+            @include titleSize(2rem);
+        }
+
+        p{
+            @include graphSize(1.5rem);
+        }
+
+        .box-container{
+            @include grid(17rem);
+
+            .box{
+                text-align: center;
+                background: $light-green;
+                border: $border;
+                padding: 3rem 2rem;
+
+                img{
+                    height: 5rem;
+                    margin-bottom: 1rem;
+                }
+
+                h3{
+                    @include titleSize(3rem);
+                }
+            }
+        }
+    }
+}
+
+.teachers .slide{
+
+    &:hover .image{
+
+        img{
+            background: $green;
+        }
+
+        .share{
+            bottom: 0;
+        }
+    }
+
+    .image{
+        background: $light-green;
+        position: relative;
+        overflow: hidden;
+
+        img{
+            width: 100%;
+        }
+
+        .share{
+            position: absolute;
+            bottom: -110%;
+            left: 0; right: 0;
+            background: rgba(0, 0, 0, .7);
+            padding: 1.5rem;
+            text-align: center;
+
+            a{
+                font-size: 2.5rem;
+                color: $white;
+                margin: 0 .5rem;
+
+                &:hover{
+                    color: $green;
+                }
+            }
+        }
+    }
+    .content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0;
+
+        h3{
+            @include titleSize(2rem);
+        }
+
+        p{
+            @include graphSize(1.5rem);
+        }
+    }
+}
+
+.reviews .slide {
+    text-align: center;
+
+    p{
+        padding: 1rem;
+        background: #eee;
+        border: $border;
+        font-size: 1.4rem;
+        color: $light-color;
+        line-height: 2;
+        margin-bottom: 3rem;
+        position: relative;
+
+        &::before{
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            height: 2rem;
+            width: 2rem;
+            background: #eee;
+            border-bottom: $border;
+            border-right: $border;
+        }
+    }
+
+    img{
+        height: 7rem;
+        width: 7rem;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    h3{
+        @include titleSize(2rem);
+        margin: .7rem 0;
+    }
+
+    .stars i{
+        font-size: 1.4rem;
+        color: $green;
+    }
+}
+
+.courses{
+
+    .box-container{
+        @include grid(30rem);
+
+        .box{
+            text-align: center;
+            border: $border;
+            
+            &.hide{
+                display: none;
+            }
+
+            &:hover .image{
+                img{
+                    transform: scale(1.1);
+                }
+            }
+
+            .image{
+                height: 25rem;
+                position: relative;
+                overflow: hidden;
+
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+
+                h3{
+                    position: absolute;
+                    top: 1rem;
+                    left: 1rem;
+                    background: $white;
+                    padding: .7rem;
+                    @include titleSize(1.5rem);
+                }
+            }
+            .content{
+                padding: 2rem;
+
+                .stars i{
+                    font-size: 1.4rem;
+                    color: $green;
+                }
+
+                h3{
+                    @include titleSize(1.7rem);
+                    padding: 1rem 0;
+                }
+                p{
+                    @include graphSize(1.5rem);
+                }
+
+                .icons{
+                    margin-top: 1.5rem;
+                    padding: 1rem;
+                    border-top: $border;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    a{
+                        @include graphSize(1.5rem);
+
+                        &:hover{
+                            color: $green;
+                        }
+
+                        i{
+                            margin-right: .5rem;
+                            color: $green;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .load-more{
+        text-align: center;
+        margin-top: 2rem;
+    }
+}
+
+.contact{
+    .box-container{
+        @include grid(17rem);
+    
+        .box{
+            text-align: center;
+            background: $light-green;
+            border: $border;
+            padding: 3rem 2rem;
+    
+            i{
+                height: 5rem;
+                width: 5rem;
+                line-height: 5rem;
+                text-align: center;
+                background: $green;
+                color: $white;
+                font-size: 2.5rem;
+                border-radius: 50%;
+                margin-bottom: .6rem;
+            }
+    
+            h3{
+                @include titleSize(1.7rem);
+            }
+    
+            p{
+                font-size: 1.5rem;
+                color: $light-color;
+                line-height: 2;
+            }
+        }
+    
+     }
+
+     .row{
+         margin-top: 5rem;
+         display: flex;
+         align-items: center;
+         flex-wrap: wrap;
+         gap: 3rem;
+
+         .image{
+             flex: 1 1 41rem;
+
+             img{
+                 width: 100%;
+             }
+         }
+
+         form{
+             flex: 1 1 41rem;
+             padding: 2rem;
+             border: $border;
+
+             h3{
+                 @include titleSize(2.5rem);
+                 margin-bottom: 1rem;
+             }
+
+             .box{
+                 width: 100%;
+                 margin: .7rem 0;
+                 padding: 1.2rem 1.4rem;
+                 border: $border;
+                 font-size: 1.6rem;
+                 text-transform: none;
+
+                 &:focus{
+                     background: $green;
+                     color: $white;
+                 }
+             }
+             textarea{
+                 height: 15rem;
+                 resize: none;
+             }
+             .btn{
+                 width: 100%;
+             }
+         }
+     }
+}
+
+.faq{
+
+    .row{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 3rem;
+
+        .box{
+            flex: 1 1 41rem;
+            p{
+                display: none;
+            }
+
+            &.active{
+                .box-heading{
+                    background: $green;
+
+                    h3{
+                        color: $white;
+                    }
+    
+                    i{
+                        color: $white;
+                        transform: rotate(180deg);
+                    }
+                }
+                p{
+                    display: block;
+                }
+
+            }
+
+            .box-heading{
+                border: $border;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem;
+
+                h3{
+                    @include titleSize(2rem);
+                }
+
+                i{
+                    font-size: 2rem;
+                }
+            }
+            p{
+                padding: 1rem;
+                border: $border;
+                font-size: 1.5rem;
+                color: $light-color;
+                line-height: 2;
+            }
+        }
+    }
+
+}
+
+@media (max-width: 1200px){
+    .header{
+        padding: 2rem 5%;
+    }
+    section{
+        padding: 3rem 5%;
+    }
+}
+
+@media (max-width: 991px){
+    html{
+        font-size: 55%;
+    }
+    .header{
+        padding: 2rem;
+    }
+
+    section{
+        padding: 3rem 2rem;
+    }
+}
+
+@media (max-width: 768px){
+    .header{
+        #menu-btn{
+            display: inline-block;
+        }
+
+        .navbar{
+            position: fixed;
+            top: 0; right: -105%;
+            width: 30rem;
+            height: 100%;
+            background-color: $white;
+            z-index: 1200;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            #close-navbar{
+                display: block;
+             }
+
+             &.active{
+                 box-shadow: 0 0 0 100vw rgba(0,0,0,.8);
+                 right: 0;
+             }
+
+             a{
+                 display: block;
+                 margin: 1rem 0;
+                 text-align: center;
+                 font-size: 3rem;
+             }
+
+        }
+    }
+    .home .slide .content h3{
+        font-size: 3rem;
+     }
+}
+
+@media (max-width:450px){
+
+    html{
+       font-size: 50%;
+    }
+ 
+    .heading{
+       font-size: 3rem;
+    }
+ 
+    .about .content .about-title{
+       font-size: 4rem;
+    }
+ 
+ }
