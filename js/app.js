@@ -1,12 +1,8 @@
-let navbar = document.querySelector('.header .navbar')
+let navbar1 = document.querySelector('.header .navbar');
 
 document.querySelector('#menu-btn').onclick = () =>{
-  navbar.classList.add('active');
+  navbar1.classList.add('active');
 }
-
-document.querySelector('#close-navbar').onclick = () =>{
-  navbar.classList.remove('active');
-};
 
 
 let account = document.querySelector('.account-form');
@@ -110,3 +106,13 @@ document.querySelectorAll('.faq .row .box').forEach(acco => {
     acco.classList.toggle('active');
   };
 });
+
+let navbar = document.querySelector('.header .navbar')
+
+document.querySelector('#menu-btn').onclick = () =>{
+  navbar.classList.add('active');
+}
+
+document.querySelector('#close-navbar').onclick = () =>{
+  navbar.classList.remove('active');
+};
